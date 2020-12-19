@@ -21,7 +21,8 @@ class bcolors:
 # Parse decker's deck
 deck = input("Enter link to the deck: ")
 
-# For test: https://www.underworlds-deckers.com/en/deck-builder/mollogs-mob/?ObjectiveCard=2206,5261,5263,5278,5288,5301,5307,8259,8262,8287,8315,8326,&GambitCard=2213,2218,5323,5324,5341,5366,5377,6017,7017,8363,&UpgradeCard=2223,2224,2226,2228,5393,5396,5398,5413,5438,7039,&DeckTitle=Mollog%20competitivo%202
+# For test: 
+# https://www.underworlds-deckers.com/en/deck-builder/mollogs-mob/?ObjectiveCard=2206,5261,5263,5278,5288,5301,5307,8259,8262,8287,8315,8326,&GambitCard=2213,2218,5323,5324,5341,5366,5377,6017,7017,8363,&UpgradeCard=2223,2224,2226,2228,5393,5396,5398,5413,5438,7039,&DeckTitle=Mollog%20competitivo%202
 
 deck_title = unquote(re.search('DeckTitle=(.*)', deck).group(1))
 # Check if deck is accessible
@@ -64,10 +65,10 @@ pdf = FPDF()
 # imagelist is the list with all image filenames
 images_per_row = 3
 rows_per_page = 3
-margin_x = 5
-margin_y = 5
-card_width = 63
-card_height = 88.25
+margin_x = 5.0
+margin_y = 5.0
+card_width = 63.0
+card_height = 88.11
 
 x = 0
 y = 0

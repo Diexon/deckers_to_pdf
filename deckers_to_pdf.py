@@ -23,6 +23,7 @@ deck = input("Enter link to the deck: ")
 
 # For test: 
 # https://www.underworlds-deckers.com/en/deck-builder/mollogs-mob/?ObjectiveCard=2206,5261,5263,5278,5288,5301,5307,8259,8262,8287,8315,8326,&GambitCard=2213,2218,5323,5324,5341,5366,5377,6017,7017,8363,&UpgradeCard=2223,2224,2226,2228,5393,5396,5398,5413,5438,7039,&DeckTitle=Mollog%20competitivo%202
+# https://www.underworlds-deckers.com/en/deck-builder/mollogs-mob/?ObjectiveCard=,305,2205,2206,3016,5268,5288,5301,5304,8262,8287,8315,8326&GambitCard=360,361,2213,2218,2222,3017,5375,6014,8363,8417,&UpgradeCard=,2223,2224,2225,2228,2505,5396,5398,5413,5429,5431,7023&DeckTitle=All%20About%20Mollog&UnderPopUp=#MyNewDecksDialog
 
 deck_title = unquote(re.search('DeckTitle=(.*)', deck).group(1))
 # Check if deck is accessible
@@ -43,8 +44,8 @@ if not os.path.exists(folder_out):
 
 for type_idx, card_type in enumerate(card_types): 
     print("Scrapping " + card_type + "...")
-    pattern = card_type + "=(.*?),\&"
-    card_numbers = re.search(pattern, deck).group(1).split(',')
+    pattern = card_type + "=(.*?)\&"
+    card_numbers = list(filter(None, re.search(pattern, deck).group(1).split(',')))
     # Safe the cards
     for idx, card_number in enumerate(card_numbers):
         img_data = rq.get('https://www.underworlds-deckers.com/imagesBackground6/1/'+card_number+'.png')

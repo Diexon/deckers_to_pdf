@@ -39,6 +39,8 @@ print(bcolors.HEADER + '\nExporting deck: ' + deck_title + '\n' + bcolors.ENDC)
 card_types = ["ObjectiveCard","GambitCard","UpgradeCard"]
 
 folder_out = deck_title.replace(' ','_')
+folder_out = deck_title.replace('/','_')
+
 if not os.path.exists(folder_out):
     os.mkdir(folder_out)
 
@@ -48,7 +50,7 @@ for type_idx, card_type in enumerate(card_types):
     card_numbers = list(filter(None, re.search(pattern, deck).group(1).split(',')))
     # Safe the cards
     for idx, card_number in enumerate(card_numbers):
-        img_data = rq.get('https://www.underworlds-deckers.com/imagesBackground6/1/'+card_number+'.png')
+        img_data = rq.get('https://www.underworlds-deckers.com/imagesBackground9/1/'+card_number+'.png')
         if img_data.status_code != 404:
             img_data = img_data.content
             print(bcolors.OKGREEN + "\t" + card_number + " -> Downloaded" + bcolors.ENDC)
